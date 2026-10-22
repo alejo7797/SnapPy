@@ -14,8 +14,7 @@ if _within_sage:
         raise ValueError("you need a more recent version of SageMath")
     from sage.libs.pari import pari
     from cypari2 import Gen
-    from cypari2.pari_instance import (prec_words_to_bits,
-                                       prec_bits_to_dec,
+    from cypari2.pari_instance import (prec_bits_to_dec,
                                        prec_dec_to_bits)
     try:
         from sage.all import PariError
@@ -33,8 +32,6 @@ else:  # Plain Python, use CyPari
     from cypari import pari
     from cypari._pari import (Gen,
                               PariError,
-                              prec_words_to_dec,
-                              prec_words_to_bits,
                               prec_bits_to_dec,
                               prec_dec_to_bits)
     shut_up = lambda: pari.shut_up()

@@ -300,7 +300,7 @@ class Number(Number_baseclass):
             self.accuracy = self.decimal_precision
         else:
             if accuracy is None:
-                accuracy = prec_bits_to_dec(64 * (self.gen.sizeword() - 2))
+                accuracy = prec_bits_to_dec(int(self.gen.bitprecision()))
 
             self.accuracy = min(accuracy, self.decimal_precision)
         self._parent = SnapPyNumbers(self._precision)
@@ -326,7 +326,7 @@ class Number(Number_baseclass):
             other_precision = other.prec()
         except AttributeError:
             if isinstance(other, Gen):
-                other_precision = prec_words_to_bits(other.sizeword())
+                other_precision = int(other.bitprecision())
             else:
                 other_precision = self._default_precision
         if is_exact(self):
